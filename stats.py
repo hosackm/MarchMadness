@@ -1,4 +1,3 @@
-import math
 # The following stats are pulled for all teams:
 # =============================================
 # Avg. per Game
@@ -29,6 +28,13 @@ import math
 # TO    = Turnovers
 # STL   = Steals
 # BLK   = Blocks
+#
+#
+# These statistics have been pulled from:
+# http://www.basketball-reference.com/about/factors.html
+# However, it is common knowledge in the basketball world that
+# Rebounds, Turnovers, Shooting, and Free Throws are the most
+# important stats for a team's success
 
 
 def get_shooting(teamstats):
@@ -61,12 +67,12 @@ def get_turnovers(teamstats):
 
 def get_rebounds(teamstats):
     """Calculate a team's rebound effectiveness (RB)
-        RB = (OFFR + REB) / (REB)
+        RB = (OFFR + REB) / (REB * 550)
     Maximize this
     """
     tg = teamstats.get  # local function ref
     try:
-        return (tg("offr") + tg("reb")) / tg("reb")
+        return (tg("offr") * tg("reb")) / (tg("reb") * 550.0)
     except Exception as e:
         print type(e), "exception during rebounds calc"
         return 0.0
@@ -83,3 +89,22 @@ def get_freethrows(teamstats):
     except Exception as e:
         print type(e), "exception during freethrows calc"
         return 0.0
+
+
+def get_team_score(teamstats):
+    """The weights of the previous 4 stats (in NBA) are:
+        Shooting: 40%
+        Turnovers: 25%
+        Rebounding: 20%
+        Free Throws: 15%
+    I would adjust these for college to:
+        Shooting: 30%
+        Turnovers: 22%
+        Rebounding: 30%
+        Free Throws: 18%
+    """
+    s, t, r, f = .4, .25, .2, .15
+    return s*get_shooting(teamstats) + \
+        t * get_turnovers(teamstats) + \
+        r * get_rebounds(teamstats) + \
+        f * get_freethrows(teamstats)

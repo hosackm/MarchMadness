@@ -1,8 +1,6 @@
 import requests
-import pprint
 from BeautifulSoup import BeautifulSoup as Soup
 import teams
-import stats
 
 
 def get_team_ext(team):
@@ -61,13 +59,17 @@ def get_stats(team):
 
 def list_teams():
     """Print out list of all available teams"""
-    pprint.pprint(sorted(teams.teams.keys()))
+    for t in sorted(teams.teams.keys()):
+        yield t
 
 
 if __name__ == "__main__":
-    #list_teams()
-    wstats = get_stats("wisconsin")
-    print "shooting: {}".format(stats.get_shooting(wstats))
-    print "turnover: {}".format(stats.get_turnovers(wstats))
-    print "rebounds: {}".format(stats.get_rebounds(wstats))
-    print "freethro: {}".format(stats.get_freethrows(wstats))
+    import stats
+    for team in list_teams():
+        s = get_stats(team)
+        print "******* {} *******".format(team)
+        print "OVERALL : {}".format(stats.get_team_score(s))
+        print "shooting: {}".format(stats.get_shooting(s))
+        print "turnover: {}".format(stats.get_turnovers(s))
+        print "rebounds: {}".format(stats.get_rebounds(s))
+        print "freethro: {}\n".format(stats.get_freethrows(s))
