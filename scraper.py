@@ -1,7 +1,8 @@
 import requests
-import teams
 import pprint
 from BeautifulSoup import BeautifulSoup as Soup
+import teams
+import stats
 
 
 def get_team_ext(team):
@@ -65,4 +66,8 @@ def list_teams():
 
 if __name__ == "__main__":
     #list_teams()
-    pprint.pprint(get_stats("wisconsin"))
+    wstats = get_stats("wisconsin")
+    print "shooting: {}".format(stats.get_shooting(wstats))
+    print "turnover: {}".format(stats.get_turnovers(wstats))
+    print "rebounds: {}".format(stats.get_rebounds(wstats))
+    print "freethro: {}".format(stats.get_freethrows(wstats))
