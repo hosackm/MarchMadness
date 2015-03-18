@@ -51,7 +51,6 @@ teams = {
     "virginia": "/258/virginia-cavaliers",
     "belmont": "/2057/belmont-bruins",
     "duke": "/150/duke-blue-devils",
-    "san-digeo-state": "/21/san-diego-st-aztecs",
     "st-johns": "/2599/st-john-red-storm",
     "utah": "/254/utah-utes",
     "sf-austin": "/2617/stephen-f-austin-lumberjacks",
@@ -62,5 +61,7 @@ teams = {
     "iowa-state": "/66/iowa-state-cyclones",
     "davidson": "/2166/davidson-wildcats",
     "gonzaga": "/2250/gonzaga-bulldogs",
-    "north-dakota-state": "/2449/north-dakota-st-bison"
+    "iowa": "/2294/iowa-hawkeyes",
+    "north-dakota-state": "/2449/north-dakota-st-bison",
+    "san-diego-state": "/21/san-diego-st-aztecs"
 }

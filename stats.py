@@ -91,7 +91,7 @@ def get_freethrows(teamstats):
         return 0.0
 
 
-def get_team_score(teamstats):
+def get_overall_score(teamstats):
     """The weights of the previous 4 stats (in NBA) are:
         Shooting: 40%
         Turnovers: 25%
@@ -105,6 +105,6 @@ def get_team_score(teamstats):
     """
     s, t, r, f = .4, .25, .2, .15
     return s*get_shooting(teamstats) + \
-        t * get_turnovers(teamstats) + \
+        t * (1.0 - get_turnovers(teamstats)) + \
         r * get_rebounds(teamstats) + \
         f * get_freethrows(teamstats)

@@ -68,7 +68,7 @@ if __name__ == "__main__":
     for team in list_teams():
         s = get_stats(team)
         print "******* {} *******".format(team)
-        print "OVERALL : {}".format(stats.get_team_score(s))
+        print "OVERALL : {}".format(stats.get_overall_score(s))
         print "shooting: {}".format(stats.get_shooting(s))
         print "turnover: {}".format(stats.get_turnovers(s))
         print "rebounds: {}".format(stats.get_rebounds(s))
