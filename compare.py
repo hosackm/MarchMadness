@@ -9,12 +9,14 @@ def compare(h, v):
     hs = scraper.get_stats(h)
     vs = scraper.get_stats(v)
 
+    # local references to functions
     gos = stats.get_overall_score
     gsh = stats.get_shooting
     gto = stats.get_turnovers
     grb = stats.get_rebounds
     gft = stats.get_freethrows
 
+    # print out some info for the user.  update this to use logging module
     print "******** {} ********\t******** {} ********".format(h, v)
     print "OVERALL : {}\tOVERALL : {}".format(gos(hs), gos(vs))
     print "shooting: {}\tshooting: {}".format(gsh(hs), gsh(vs))
@@ -22,9 +24,11 @@ def compare(h, v):
     print "rebounds: {}\trebounds: {}".format(grb(hs), grb(vs))
     print "freethro: {}\tfreethro: {}\n\n".format(gft(hs), gft(vs))
 
+    # get overall home and visitor stats
     ho = gos(hs)
     vo = gos(vs)
 
+    # finally do the comparison
     if ho > vo:
         print "WINNER = {} by {}".format(h, (ho-vo)*100)
     elif ho < vo:
