@@ -92,7 +92,7 @@ teams = {
     "michigan": "/130/michigan-wolverines",
     "tulsa": "/202/tulsa-golden-hurricane",
     "pittsburgh": "/221/pittsburgh-panthers",
-    "weber-state": "2692/weber-state-wildcats",
+    "weber-state": "/2692/weber-state-wildcats",
     "texas-tech": "/2641/texas-tech-red-raiders",
     "little-rock": "/2031/arkansas-little-rock-trojans",
     "iona": "/314/iona-gaels",
