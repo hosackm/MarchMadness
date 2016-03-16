@@ -17,15 +17,19 @@ def get_stats(team):
     url_base = "http://espn.go.com/mens-college-basketball/team/stats/_/id"
     team_ext = get_team_ext(team)
     if not team_ext:
-        print("Fix your team name: {}".format(team))
-        return None
+        raise Exception("Unable to find URL query for this team.")
 
     r = requests.get(url_base + team_ext)
     soup = Soup(r.text, "html.parser")
+
+    # all stats are within <tr class="total"></tr> tags
     game, season = soup.findAll("tr", "total")[:2]
+
+    # get HTML inner text
     game = [t.text for t in game.findAll("td")]
     season = [t.text for t in season.findAll("td")]
-    # unpack values
+
+    # Pull out the important stats from the list of various stats
     (_, GP, _, PPG, RPG, APG,
         SPG, BPG, TPG, FGP, FTP, TPP) = game
     (_, _, FGM, FGA, FTM, FTA,
