@@ -1,6 +1,7 @@
+from __future__ import print_function
 import requests
-from BeautifulSoup import BeautifulSoup as Soup
 import teams
+from bs4 import BeautifulSoup as Soup
 
 
 def get_team_ext(team):
@@ -16,11 +17,11 @@ def get_stats(team):
     url_base = "http://espn.go.com/mens-college-basketball/team/stats/_/id"
     team_ext = get_team_ext(team)
     if not team_ext:
-        print "Fix your team name: {}".format(team)
+        print("Fix your team name: {}".format(team))
         return None
 
     r = requests.get(url_base + team_ext)
-    soup = Soup(r.text)
+    soup = Soup(r.text, "html.parser")
     game, season = soup.findAll("tr", "total")[:2]
     game = [t.text for t in game.findAll("td")]
     season = [t.text for t in season.findAll("td")]
@@ -66,9 +67,9 @@ if __name__ == "__main__":
     import stats
     for team in list_teams():
         s = get_stats(team)
-        print "******* {} *******".format(team)
-        print "OVERALL : {}".format(stats.get_overall_score(s))
-        print "shooting: {}".format(stats.get_shooting(s))
-        print "turnover: {}".format(stats.get_turnovers(s))
-        print "rebounds: {}".format(stats.get_rebounds(s))
-        print "freethro: {}\n".format(stats.get_freethrows(s))
+        print("******* {} *******".format(team))
+        print("OVERALL : {}".format(stats.get_overall_score(s)))
+        print("shooting: {}".format(stats.get_shooting(s)))
+        print("turnover: {}".format(stats.get_turnovers(s)))
+        print("rebounds: {}".format(stats.get_rebounds(s)))
+        print("freethro: {}\n".format(stats.get_freethrows(s)))

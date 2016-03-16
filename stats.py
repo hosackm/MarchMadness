@@ -1,3 +1,4 @@
+from __future__ import print_function
 # The following stats are pulled for all teams:
 # =============================================
 # Avg. per Game
@@ -47,7 +48,7 @@ def get_shooting(teamstats):
     try:
         return (tg("fgm") + 0.5 * tg("tpm")) / tg("fga")
     except Exception as e:
-        print type(e), "exception during shooting calc"
+        print(type(e), "exception during shooting calc")
         return 0.0
 
 
@@ -61,7 +62,7 @@ def get_turnovers(teamstats):
     try:
         return tg("to") / (tg("fga") + 0.44 * tg("fta") + tg("to"))
     except Exception as e:
-        print type(e), "exception during turnovers calc"
+        print(type(e), "exception during turnovers calc")
         return 0.0
 
 
@@ -74,7 +75,7 @@ def get_rebounds(teamstats):
     try:
         return (tg("offr") * tg("reb")) / (tg("reb") * 550.0)
     except Exception as e:
-        print type(e), "exception during rebounds calc"
+        print(type(e), "exception during rebounds calc")
         return 0.0
 
 
@@ -87,7 +88,7 @@ def get_freethrows(teamstats):
     try:
         return tg("ftm") / tg("fta")
     except Exception as e:
-        print type(e), "exception during freethrows calc"
+        print(type(e), "exception during freethrows calc")
         return 0.0
 
 
