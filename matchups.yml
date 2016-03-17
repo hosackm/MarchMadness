@@ -1,4 +1,13 @@
-south: [kansas, austin-peay, colorado, uconn, maryland, south-dakota-state, cal, hawaii, arizona, wichita-state, miami-florida, buffalo, iowa, temple, villanova, north-carolina-asheville]
-east: [north-carolina, florida-gulf-coast, usc, providence, indiana, chattanooga, kentucky, stony-brook, notre-dame, michigan, west-virginia, sf-austin, wisconsin, pittsburgh, xavier, weber-state]
-west: [oregon, southern, st-joes, cincinnati, baylor, yale, duke, north-carolina-wilmington, texas, northern-iowa, texas-am, green-bay, oregon-state, vcu, oklahoma, cal-state-bakersfield]
-midwest: [virginia, hampton, texas-tech, butler, purdue, little-rock, iowa-state, iona, seton-hall, gonzaga, utah, fresno-state, dayton, syracuse, michigan-state, middle-tennessee]
+# Updated March 16, 2016
+south: [kansas, austin-peay, colorado, uconn, maryland, south-dakota-state,
+        cal, hawaii, arizona, wichita-state, miami-florida, buffalo, iowa,
+        temple, villanova, north-carolina-asheville]
+east: [north-carolina, florida-gulf-coast, usc, providence, indiana,
+       chattanooga, kentucky, stony-brook, notre-dame, michigan, west-virginia,
+       sf-austin, wisconsin, pittsburgh, xavier, weber-state]
+west: [oregon, southern, st-joes, cincinnati, baylor, yale, duke,
+       north-carolina-wilmington, texas, northern-iowa, texas-am, green-bay,
+       oregon-state, vcu, oklahoma, cal-state-bakersfield]
+midwest: [virginia, hampton, texas-tech, butler, purdue, little-rock,
+          iowa-state, iona, seton-hall, gonzaga, utah, fresno-state,
+          dayton, syracuse, michigan-state, middle-tennessee]
