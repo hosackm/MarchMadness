@@ -16,6 +16,11 @@ class Runner:
         self.finalfour = {}
         self.winner = None
 
+    def run(self):
+        self.simulate_regions()
+        self.simulate_final_four()
+        return self.winner
+
     def compare(self, home, visitor):
         "Compare home team stats vs visitor team stats"
         # get overall home and visitor stats
@@ -37,8 +42,11 @@ class Runner:
         if len(teams) < 2:
             return teams[0]
 
-        rnd = 5 - log(len(teams), 2)
-        logger.info("{} Round {}: {}".format(region, rnd, teams))
+        if region == "Final Four":
+            rnd = "Quarterfinals" if len(teams) == 4 else "Finals"
+        else:
+            rnd = "Round {}".format(str(5 - int(log(len(teams), 2))))
+        logger.info("{} {}: {}".format(region, rnd, teams))
 
         # zip matchups from what's left in the teams list
         # [1, 2, 3, 4] => [(1, 2), (3, 4)]
@@ -61,12 +69,16 @@ class Runner:
         return self.simulate(region, teams)
 
     def simulate_regions(self):
+        "Simulate each of the 4 regions and put winners into self.finalfour"
         for region, teams in self.matchups.items():
             self.finalfour[region] = self.simulate(region, teams)
+        return self.finalfour
 
     def simulate_final_four(self):
+        "Simulate the final four and return the winner"
         if self.finalfour:
-            self.winner = self.simulate((self.finalfour["west"],
+            self.winner = self.simulate("Final Four",
+                                        (self.finalfour["west"],
                                          self.finalfour["south"],
                                          self.finalfour["midwest"],
                                          self.finalfour["east"]))
@@ -74,5 +86,4 @@ class Runner:
 
 if __name__ == "__main__":
     r = Runner()
-    r.simulate_regions()
-    print(r.finalfour)
+    print(r.run())
