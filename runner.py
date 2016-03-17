@@ -1,8 +1,8 @@
 import yaml
 import logging
 from math import log
-from scraper import Scraper
-from stats import Statistics
+from marchmadness.scraper import Scraper
+from marchmadness.stats import Statistics
 
 logging.basicConfig()
 logger = logging.getLogger("march.maddness.log")

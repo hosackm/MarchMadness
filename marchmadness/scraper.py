@@ -1,10 +1,10 @@
 from __future__ import print_function
-from bs4 import BeautifulSoup as Soup
 import pickle
 import requests
-import teams
 import time
 import os
+from bs4 import BeautifulSoup as Soup
+from .teams import teams
 
 
 def load_cache(filename):
@@ -18,12 +18,12 @@ def load_cache(filename):
 
 def get_team_ext(team):
     """Give url extension for team's espn.com page"""
-    return teams.teams.get(team)
+    return teams.get(team)
 
 
 def list_teams():
     """Print out list of all available teams"""
-    for t in sorted(teams.teams.keys()):
+    for t in sorted(teams.keys()):
         yield t
 
 
